@@ -5,7 +5,7 @@ namespace Game.Scripts.Render
 {
     public class ObjectRenderer : MonoBehaviour
     {
-        public static readonly List<IDrawableObject> DRAWABLES = new List<IDrawableObject>();
+        public static readonly List<DrawableObject> DRAWABLES = new List<DrawableObject>();
         public Rect tileRect;
         public Texture tileTexture;
 
@@ -13,16 +13,16 @@ namespace Game.Scripts.Render
         {
             foreach (var drawable in DRAWABLES)
             {
-                drawable.Render();
+                drawable.GetRenderProvider().Render();
             }
         }
 
-        public static void HideObject(IDrawableObject drawableObject)
+        public static void HideObject(DrawableObject drawableObject)
         {
             DRAWABLES.Remove(drawableObject);
         }
 
-        public static void ShowObject(IDrawableObject drawableObject)
+        public static void ShowObject(DrawableObject drawableObject)
         {
             DRAWABLES.Add(drawableObject);
         }

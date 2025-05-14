@@ -17,7 +17,7 @@ namespace Game.Scripts
         private GameTileMap _map;
         private WorldMap _world;
         private Camera _mainCamera;
-        private IDrawableObject _hoveredDrawable;
+        private DrawableObject _hoveredDrawable;
         private Tile _hoveredTile;
         private Vector3 _mouseWorldPos;
         private LoadedEntity _spectatingEntity;

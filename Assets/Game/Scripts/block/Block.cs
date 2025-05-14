@@ -6,7 +6,7 @@ using UnityEngine;
 
 namespace Game.Scripts.block
 {
-    public abstract class Block : IModelOwner
+    public abstract class Block : DrawableObject
     {
         protected WorldMap? WorldMap;
         private Tile RootTile;
@@ -36,24 +36,9 @@ namespace Game.Scripts.block
             return RootTile;
         }
 
-        public virtual Model GetModel()
-        {
-            return null;
-        }
-
-        public Vector2 GetModelPosition()
-        {
-            return GetPosition();
-        }
-
         public virtual Vector2 GetPosition()
         {
             return this.GetOwner().GetPosition();
-        }
-
-        protected virtual void RenderThis()
-        {
-            ((IDrawableObject) this).Render();
         }
     }
 }

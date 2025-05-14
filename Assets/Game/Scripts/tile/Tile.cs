@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace Game.Scripts.tile
 {
-    public class Tile : IModelOwner
+    public class Tile : DrawableObject
     {
         private Vector2 _position;
         public readonly TileType TileType;
