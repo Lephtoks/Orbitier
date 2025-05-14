@@ -19,7 +19,7 @@ namespace Game.Scripts.Render.renderProviders
         {
             foreach (var link in links)
             {
-                Graphics.DrawTexture(new Rect(link.Point, new Vector2(1, 1)), );
+                // Graphics.DrawTexture(new Rect(link.Point, new Vector2(1, 1)), );
             }
             base.Render();
         }

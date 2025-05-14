@@ -1,25 +1,17 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace Game.Scripts.Render
 {
     public class Model
     {
-        public readonly Texture Texture;
-        public readonly Vector2 Size;
-        public readonly Vector2 Offset;
+        private readonly List<ModelEntry> Entries;
 
-        public Model(Texture texture, Vector2 size, Vector2 offset)
+        public Model(List<ModelEntry> entries)
         {
-            Texture = texture;
-            Size = size;
-            Offset = offset;
+            this.Entries = entries;
         }
 
-        public static Model Of(string texturePath, int x, int y, int xOffset, int yOffset)
-        {
-            return new Model(Resources.Load<Texture>("Textures/" + texturePath), new Vector2(x, y),
-                new Vector2(xOffset, yOffset));
-
-        }
+        public record ModelEntry(Texture Texture, Vector2 Size, Vector2 Offset, float Rotation);
     }
 }
