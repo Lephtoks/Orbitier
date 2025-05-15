@@ -19,6 +19,17 @@ namespace Game.Scripts.Render
             return new Model(list);
         }
 
+        public static void RenderModel(Model model, Vector2 position)
+        {
+            foreach (var modelEntry in model.Entries)
+            {
+                // GL.PushMatrix();
+                // GL.LoadProjectionMatrix(Matrix4x4.Rotate(Quaternion.Euler(0, 0, modelEntry.Rotation)));
+                Graphics.DrawTexture(new Rect(position+modelEntry.Offset, modelEntry.Size), modelEntry.Texture);
+                // GL.PopMatrix();
+            }
+        }
+
         public record ModelEntry(Texture Texture, Vector2 Size, Vector2 Offset, float Rotation);
     }
 }
