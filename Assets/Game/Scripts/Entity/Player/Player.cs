@@ -1,4 +1,4 @@
-using Game.Scripts.data;
+using Game.Scripts.Data;
 using Game.Scripts.Registry;
 using Game.Scripts.Render;
 using UnityEngine;

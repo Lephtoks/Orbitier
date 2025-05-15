@@ -1,5 +1,5 @@
 using Game.Scripts.Render;
-using Game.Scripts.Render.renderProviders;
+using Game.Scripts.Render.RenderProviders;
 using UnityEngine;
 
 namespace Game.Scripts.Entity
