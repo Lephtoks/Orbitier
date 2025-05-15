@@ -6,7 +6,7 @@ namespace Game.Scripts.Render.renderProviders
     public class ModelRenderProvider : RenderProvider
     {
         private readonly Model model;
-        private readonly Func<Vector2> positionProvider;
+        protected readonly Func<Vector2> positionProvider;
 
         public ModelRenderProvider(Model model, Func<Vector2> positionProvider)
         {

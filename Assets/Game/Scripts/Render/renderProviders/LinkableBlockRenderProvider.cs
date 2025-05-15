@@ -2,6 +2,8 @@ using System;
 using System.Collections.ObjectModel;
 using Game.Scripts.block;
 using Game.Scripts.block.link;
+using Game.Scripts.data;
+using Game.Scripts.Registry;
 using UnityEngine;
 
 namespace Game.Scripts.Render.renderProviders
@@ -9,6 +11,7 @@ namespace Game.Scripts.Render.renderProviders
     public class LinkableBlockRenderProvider : ModelRenderProvider
     {
         protected readonly ReadOnlyCollection<LinkPoint> links;
+        private static readonly Model LINK_MODEL = OrbitierAssets.GetModel(Identifier.OfVanilla("blocks/special/link"));
 
         public LinkableBlockRenderProvider(Model model, LinkableBlock block) : base(model, block.GetPosition)
         {
@@ -17,11 +20,11 @@ namespace Game.Scripts.Render.renderProviders
 
         public override void Render()
         {
+            base.Render();
             foreach (var link in links)
             {
-                // Graphics.DrawTexture(new Rect(link.Point, new Vector2(1, 1)), );
+                Model.RenderModel(LINK_MODEL, link.Point + this.positionProvider.Invoke());
             }
-            base.Render();
         }
     }
 }
