@@ -75,25 +75,19 @@ namespace Game.Scripts
                 {
                     _hoveredDrawable = drawable;
                 }
-
-                if (drawable is LinkableBlock linkableBlock)
-                {
-                    foreach (var link in linkableBlock.GetLinkPoints())
-                    {
-                        
-                    }
-
-                }
                 if (!linkPointStopped && (clicked || released) && drawable is LinkableBlock block)
                 {
                     foreach (var link in block.GetLinkPoints())
                     {
-                        if (Vector2.Distance(_mouseWorldPos, link.Point + block.GetPosition()) < 0.5f)
+                        if (Vector2.Distance(_mouseWorldPos, link.Point + block.GetPosition()) < 2f)
                         {
+                            Debug.Log("SELECTED!");
                             if (clicked) _selectedLinkPoint = link;
                             else
                             {
                                 _selectedLinkPoint.LinkWIth(link);
+                                
+                                Debug.Log($"LINKED {link.Link.From} WITH {link.Link.To}");
                             };
                             linkPointStopped = true;
                             break;
