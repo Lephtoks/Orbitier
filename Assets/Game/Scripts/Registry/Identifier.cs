@@ -16,6 +16,10 @@ namespace Game.Scripts.Registry
         {
             return new Identifier(@namespace, path);
         }
+        public static Identifier OfVanilla(string path)
+        {
+            return Identifier.Of("orbitier", path);
+        }
 
         public bool Equals(Identifier other)
         {
@@ -30,6 +34,15 @@ namespace Game.Scripts.Registry
         public override int GetHashCode()
         {
             return HashCode.Combine(_path, _namespace);
+        }
+        public string getPath() { return _path; }
+        public string getNamespace() { return _namespace; }
+
+        public static Identifier Parse(string text)
+        {
+            int colon = text.IndexOf(':');
+            
+            return Identifier.Of(text.Substring(0, colon),  text.Substring(colon + 1));
         }
     }
 }

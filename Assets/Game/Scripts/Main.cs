@@ -1,6 +1,9 @@
+using System;
 using System.ComponentModel;
+using System.IO;
 using Game.Scripts.block;
 using Game.Scripts.block.link;
+using Game.Scripts.data;
 using Game.Scripts.Entity;
 using Game.Scripts.Entity.Player;
 using Game.Scripts.Registry;
@@ -28,6 +31,8 @@ namespace Game.Scripts
 
         private void Start()
         {
+            OrbitierAssets.RegisterAssetReader("orbitier", Application.dataPath + "/Resources");
+            
             Registration();
             
             _mainCamera = Camera.main;
@@ -164,6 +169,12 @@ namespace Game.Scripts
         {
             GameTiles.Init();
         }
+    }
+
+    [Serializable]
+    public class TST
+    {
+        public int i;
     }
     
 }

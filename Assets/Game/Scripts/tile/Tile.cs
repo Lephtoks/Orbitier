@@ -7,6 +7,7 @@ namespace Game.Scripts.tile
 {
     public class Tile : DrawableObject
     {
+        protected override RenderProvider renderProvider => TileType.GetRenderProvider();
         private Vector2 _position;
         public readonly TileType TileType;
         protected WorldMap WorldMap;

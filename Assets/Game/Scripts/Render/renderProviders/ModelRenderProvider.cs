@@ -15,7 +15,13 @@ namespace Game.Scripts.Render.renderProviders
         }
         public override void Render()
         {
-            Graphics.DrawTexture(new Rect(this.positionProvider.Invoke()+model.Offset, model.Size), model.Texture);
+            foreach (var modelEntry in model.Entries)
+            {
+                GL.PushMatrix();
+                GL.LoadProjectionMatrix(Matrix4x4.Rotate(Quaternion.Euler(0, 0, modelEntry.Rotation)));
+                Graphics.DrawTexture(new Rect(this.positionProvider.Invoke()+modelEntry.Offset, modelEntry.Size), modelEntry.Texture);
+                GL.PopMatrix();
+            }
         }
     }
 }

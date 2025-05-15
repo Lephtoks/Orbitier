@@ -16,8 +16,9 @@ namespace Game.Scripts.tile.Tiles
         public static TileType Create(float x, float y, string texturePath, int xOffset, int yOffset)
         {
             return new Hex(
-                new Model(Resources.Load<Texture>("Textures/Tiles/" + texturePath), new Vector2(x, y), new Vector2(xOffset, yOffset))
+                Model.Of(Resources.Load<Texture>("Textures/Tiles/" + texturePath), new Vector2(x, y), new Vector2(xOffset, yOffset), 0)
             );
         }
+        
     }
 }

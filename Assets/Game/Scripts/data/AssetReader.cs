@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using Game.Scripts.Render;
 using System;
 using System.IO;
+using Game.Scripts.Registry;
 using UnityEngine;
 
 namespace Game.Scripts.data
@@ -25,16 +26,16 @@ namespace Game.Scripts.data
         {
             if (cacheModels.TryGetValue(path, out var tex)) return tex;
             
-            ModelRoot root = JsonUtility.FromJson<ModelRoot>(fullPath +  "/models/" + path);
+            ModelRoot root = JsonUtility.FromJson<ModelRoot>(File.ReadAllText(fullPath +  "/models/" + path +  ".json"));
             
             var entries = new List<Model.ModelEntry>();
 
             foreach (var element in root.elements)
             {
-                entries.Add(new Model.ModelEntry(getTexture(element.texture), element.size, element.offset, element.rotation));
+                var modelEntry = new Model.ModelEntry(OrbitierAssets.GetTexture(Identifier.Parse(element.texture)), element.size, element.offset, element.rotation);
+                entries.Add(modelEntry);
             }
             Model model = new Model(entries);
-            
             cacheModels.Add(path, model);
             return model;
         }
@@ -43,7 +44,7 @@ namespace Game.Scripts.data
         {
             if (cacheTextures.TryGetValue(path, out var tex)) return tex;
             
-            byte[] bytes = File.ReadAllBytes(fullPath +  "/textures/" + path);
+            byte[] bytes = File.ReadAllBytes(fullPath +  "/textures/" + path + ".png");
             Texture2D texture = new Texture2D(1, 1);
             texture.LoadImage(bytes);
             
@@ -52,7 +53,7 @@ namespace Game.Scripts.data
         }
         
         [Serializable]
-        private struct JSONModel
+        private class JSONModel
         {
             public Vector2 offset;
             public Vector2 size;
@@ -61,7 +62,7 @@ namespace Game.Scripts.data
         }
 
         [Serializable]
-        private struct ModelRoot
+        private class ModelRoot
         {
             public List<JSONModel> elements;
         }

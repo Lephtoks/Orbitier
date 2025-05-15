@@ -1,5 +1,7 @@
 using Game.Scripts.block.link;
+using Game.Scripts.data;
 using Game.Scripts.items;
+using Game.Scripts.Registry;
 using Game.Scripts.Render;
 using Game.Scripts.Render.renderProviders;
 using Game.Scripts.tile;
@@ -36,7 +38,8 @@ namespace Game.Scripts.block
         {
             container.RemoveAllOf(this);
         }
+        private static readonly Model model = OrbitierAssets.GetModel(Identifier.OfVanilla("blocks/pulsar"));
 
-        private static readonly Model model = new Model(Resources.Load<Texture>("Textures/Tiles/square"),  new Vector2(4, 4), Vector2.zero);
+        // private static readonly Model model = new Model(Resources.Load<Texture>("Textures/Tiles/square"),  new Vector2(4, 4), Vector2.zero);
     }
 }

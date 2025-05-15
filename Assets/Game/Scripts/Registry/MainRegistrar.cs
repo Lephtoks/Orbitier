@@ -1,3 +1,5 @@
+using Game.Scripts.Render;
+
 namespace Game.Scripts.Registry
 {
     public class MainRegistrar
@@ -9,13 +11,13 @@ namespace Game.Scripts.Registry
             Namespace = @namespace;
         }
 
-        public Registrar<T> RegistrarOf<T>(Registry<T> registry)
+        public Registrar<T> RegistrarOf<T>(Registry<T> registry) where T : Registrable
         {
             return new Registrar<T>(this, registry);
         }
     }
 
-    public class Registrar<T>
+    public class Registrar<T> where T : Registrable
     {
         private readonly MainRegistrar _main;
         private readonly Registry<T> _registry;
@@ -28,7 +30,9 @@ namespace Game.Scripts.Registry
 
         public T Register(string name, T value)
         {
-            _registry.Register(_registry.KeyOf(Identifier.Of(_main.Namespace, name)), value);
+            var identifier = Identifier.Of(_main.Namespace, name);
+            _registry.Register(_registry.KeyOf(identifier), value);
+            value.OnRegister(in identifier);
             return value;
         }
     }
