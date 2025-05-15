@@ -15,7 +15,7 @@ namespace Game.Scripts.block
     {
         private readonly LinkPoint _linkPoint;
 
-        protected override RenderProvider GenerateRenderProvider() => new ModelRenderProvider(model, this.GetPosition);
+        protected override RenderProvider RenderProvider => new ModelRenderProvider(model, this.GetPosition);
 
         public PulsarBlock() : base()
         {
@@ -39,7 +39,5 @@ namespace Game.Scripts.block
             container.RemoveAllOf(this);
         }
         private static readonly Model model = OrbitierAssets.GetModel(Identifier.OfVanilla("blocks/pulsar"));
-
-        // private static readonly Model model = new Model(Resources.Load<Texture>("Textures/Tiles/square"),  new Vector2(4, 4), Vector2.zero);
     }
 }

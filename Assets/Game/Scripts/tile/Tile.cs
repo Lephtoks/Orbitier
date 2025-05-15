@@ -11,7 +11,7 @@ namespace Game.Scripts.tile
         public readonly TileType TileType;
         protected WorldMap WorldMap;
         private Block _block;
-        protected override RenderProvider GenerateRenderProvider() => TileType.GetRenderProvider(this);
+        protected override RenderProvider RenderProvider => TileType.GetRenderProvider(this);
 
         public Tile(Vector2 position, TileType tileType)
         {
