@@ -1,0 +1,10 @@
+{
+  "elements": [
+    {
+      "texture": "orbitier:blocks/pulsar",
+      "offset": { "x": 0, "y": 0 },
+      "size": { "x": 4, "y": 4 },
+      "rotation": 0
+    }
+  ]
+}

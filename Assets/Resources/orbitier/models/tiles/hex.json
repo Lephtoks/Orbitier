@@ -1,0 +1,10 @@
+{
+  "elements": [
+    {
+      "texture": "orbitier:tiles/hex",
+      "offset": { "x": 2, "y": 1 },
+      "size": { "x": 6, "y": 6 },
+      "rotation": 0
+    }
+  ]
+}

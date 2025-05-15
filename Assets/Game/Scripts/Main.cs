@@ -31,11 +31,11 @@ namespace Game.Scripts
 
         private void Start()
         {
+            _mainCamera = Camera.main;
+            
             OrbitierAssets.RegisterAssetReader("orbitier", Application.dataPath + "/Resources");
             
             Registration();
-            
-            _mainCamera = Camera.main;
             
             
             _map = new GameTileMap();
@@ -57,7 +57,7 @@ namespace Game.Scripts
             ObjectRenderer.ShowObject(player);
         }
         
-        public static readonly MainRegistrar VANILLA = new MainRegistrar("vanilla");
+        public static readonly MainRegistrar VANILLA = new MainRegistrar("orbitier");
 
         private void Update()
         {

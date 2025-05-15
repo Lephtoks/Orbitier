@@ -35,8 +35,8 @@ namespace Game.Scripts.Registry
         {
             return HashCode.Combine(_path, _namespace);
         }
-        public string getPath() { return _path; }
-        public string getNamespace() { return _namespace; }
+        public readonly string getPath() { return _path; }
+        public readonly string getNamespace() { return _namespace; }
 
         public static Identifier Parse(string text)
         {

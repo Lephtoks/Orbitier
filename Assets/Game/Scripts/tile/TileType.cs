@@ -1,25 +1,28 @@
 using System.Collections.Generic;
+using Game.Scripts.data;
+using Game.Scripts.Registry;
 using Game.Scripts.Render;
+using Game.Scripts.Render.renderProviders;
 using UnityEngine;
 
 namespace Game.Scripts.tile
 {
-    public class TileType
+    public class TileType : Registrable
     {
-        public readonly Model Model;
-        public TileType(Model model)
+        protected Model Model;
+        
+        public void OnRegister(in Identifier item)
         {
-            Model = model;
+            this.Model = OrbitierAssets.GetModel(Identifier.Of(item.getNamespace(), "tiles/" + item.getPath()));
         }
         private static readonly Shape HoverShape = new Shape(new Vector2(0, 0), new Vector2(6f, 0f), new Vector2(6f, 6f), new Vector2(0f, 6f));
         public virtual Shape GetHoverShape()
         {
             return HoverShape;
         }
-
-        public RenderProvider GetRenderProvider()
+        public RenderProvider GetRenderProvider(Tile tile)
         {
-            throw new System.NotImplementedException();
+            return new ModelRenderProvider(Model, tile.GetPosition);
         }
     }
 

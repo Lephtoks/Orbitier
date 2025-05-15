@@ -17,10 +17,10 @@ namespace Game.Scripts.Render.renderProviders
         {
             foreach (var modelEntry in model.Entries)
             {
-                GL.PushMatrix();
-                GL.LoadProjectionMatrix(Matrix4x4.Rotate(Quaternion.Euler(0, 0, modelEntry.Rotation)));
+                // GL.PushMatrix();
+                // GL.LoadProjectionMatrix(Matrix4x4.Rotate(Quaternion.Euler(0, 0, modelEntry.Rotation)));
                 Graphics.DrawTexture(new Rect(this.positionProvider.Invoke()+modelEntry.Offset, modelEntry.Size), modelEntry.Texture);
-                GL.PopMatrix();
+                // GL.PopMatrix();
             }
         }
     }
