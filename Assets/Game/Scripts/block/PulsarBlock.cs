@@ -15,7 +15,7 @@ namespace Game.Scripts.block
     {
         private readonly LinkPoint _linkPoint;
 
-        protected override RenderProvider renderProvider => new ModelRenderProvider(model, this.GetPosition);
+        protected override RenderProvider GenerateRenderProvider() => new ModelRenderProvider(model, this.GetPosition);
 
         public PulsarBlock() : base()
         {

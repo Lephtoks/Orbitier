@@ -118,7 +118,6 @@ namespace Game.Scripts
                     var pulsarBlock = new PulsarBlock();
                     tile.SetBlock(pulsarBlock);
                     ObjectRenderer.ShowObject(pulsarBlock);
-                    Debug.Log(tile.GetBlock());
                     
                 }
             }

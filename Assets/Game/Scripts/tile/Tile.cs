@@ -7,11 +7,11 @@ namespace Game.Scripts.tile
 {
     public class Tile : DrawableObject
     {
-        protected override RenderProvider renderProvider => TileType.GetRenderProvider(this);
         private Vector2 _position;
         public readonly TileType TileType;
         protected WorldMap WorldMap;
         private Block _block;
+        protected override RenderProvider GenerateRenderProvider() => TileType.GetRenderProvider(this);
 
         public Tile(Vector2 position, TileType tileType)
         {

@@ -2,11 +2,13 @@ namespace Game.Scripts.Render
 {
     public abstract class DrawableObject
     {
-        protected virtual RenderProvider renderProvider => null;
+        private RenderProvider _current;
+        protected virtual RenderProvider GenerateRenderProvider() => null;
+
 
         public RenderProvider GetRenderProvider()
         {
-            return this.renderProvider;
+            return this._current ??= GenerateRenderProvider();
         }
     }
 }

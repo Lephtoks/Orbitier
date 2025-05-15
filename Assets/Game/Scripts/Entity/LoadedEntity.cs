@@ -10,7 +10,7 @@ namespace Game.Scripts.Entity
         protected Model _model;
         protected Vector2 _last_position;
 
-        protected override RenderProvider renderProvider => new ModelRenderProvider(_model, this.GetPosition);
+        protected override RenderProvider GenerateRenderProvider() => new ModelRenderProvider(_model, this.GetPosition);
 
         protected LoadedEntity(Vector2 pos, Model model)
         {
