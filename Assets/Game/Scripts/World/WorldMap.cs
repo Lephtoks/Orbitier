@@ -1,8 +1,8 @@
 using System.Collections.Generic;
 using System.Linq;
-using Game.Scripts.block.link;
+using Game.Scripts.Blocks.Links;
 using Game.Scripts.Entity;
-using Game.Scripts.tile;
+using Game.Scripts.Tiling;
 using Game.Scripts.World.Schedules;
 
 namespace Game.Scripts.World

@@ -1,4 +1,4 @@
-using Game.Scripts.tile;
+using Game.Scripts.Tiling;
 
 namespace Game.Scripts.Registry
 {

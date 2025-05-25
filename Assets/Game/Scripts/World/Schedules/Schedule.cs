@@ -1,4 +1,4 @@
-using Game.Scripts.block;
+using Game.Scripts.Blocks;
 
 namespace Game.Scripts.World.Schedules
 {
