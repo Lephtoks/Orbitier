@@ -1,3 +1,4 @@
+#nullable enable
 namespace Game.Scripts.Entity
 {
     public interface IControllable

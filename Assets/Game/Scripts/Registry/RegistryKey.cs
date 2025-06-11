@@ -1,3 +1,4 @@
+#nullable enable
 using System;
 using System.Collections.Generic;
 
@@ -29,7 +30,7 @@ namespace Game.Scripts.Registry
             return EqualityComparer<T>.Default.Equals(_registry, other._registry) && _identifier.Equals(other._identifier);
         }
 
-        public override bool Equals(object obj)
+        public override bool Equals(object? obj)
         {
             return obj is RegistryKey<T> other && Equals(other);
         }

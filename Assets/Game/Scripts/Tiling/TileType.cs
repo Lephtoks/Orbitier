@@ -1,3 +1,4 @@
+#nullable enable
 using System.Collections.Generic;
 using Game.Scripts.Data;
 using Game.Scripts.Registry;

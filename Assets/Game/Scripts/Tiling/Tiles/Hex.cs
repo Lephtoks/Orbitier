@@ -1,3 +1,4 @@
+#nullable enable
 using Game.Scripts.Render;
 using UnityEngine;
 

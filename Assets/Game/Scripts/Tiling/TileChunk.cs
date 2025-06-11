@@ -1,3 +1,4 @@
+#nullable enable
 using System.Collections.Generic;
 using Game.Scripts.Render;
 using Game.Scripts.Tiling.Mosaic;
@@ -26,7 +27,7 @@ namespace Game.Scripts.Tiling
             {
                 for (var y = 0; y < SIZE; y++)
                 {
-                    var mosaic = Mosaics.HEX_HORIZONTAL;
+                    var mosaic = Mosaics.PLAINS;
                     var global = new Vector2(x, y) + _position * SIZE;
                     if (!mosaic.Check(global)) continue;
                     

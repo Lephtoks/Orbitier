@@ -1,3 +1,4 @@
+#nullable enable
 using Game.Scripts.Blocks;
 
 namespace Game.Scripts.World.Schedules

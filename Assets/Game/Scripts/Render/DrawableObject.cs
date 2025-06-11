@@ -1,3 +1,4 @@
+#nullable enable
 namespace Game.Scripts.Render
 {
     public abstract class DrawableObject

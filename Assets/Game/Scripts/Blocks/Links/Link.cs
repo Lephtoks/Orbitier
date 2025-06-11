@@ -1,5 +1,7 @@
+#nullable enable
 using Game.Scripts.Items;
 using Game.Scripts.World;
+using UnityEngine;
 
 namespace Game.Scripts.Blocks.Links
 {
@@ -7,18 +9,25 @@ namespace Game.Scripts.Blocks.Links
     {
         public readonly LinkPoint From;
         public readonly LinkPoint To;
-        public readonly int Color;
+        public Vector2 InterpolatedEnd;
+        public readonly Color Color;
         public readonly LinkGroup Group;
         public readonly WorldMap? WorldMap;
         private ILinkItem? LinkItem;
 
-        public Link(LinkPoint from, LinkPoint to, LinkGroup group = LinkGroup.OTHER, int color = -1)
+        public Link(LinkPoint from, LinkPoint to, LinkGroup group = LinkGroup.OTHER, Color? color = null)
         {
             From = from;
             To = to;
+            InterpolatedEnd = To.GetPos();
             Group = group;
-            Color = color;
+            Color = color ??  Color.yellow;
             WorldMap = to.Owner.GetWorldMap();
+        }
+
+        public void ResetInterpolation()
+        {
+            InterpolatedEnd = From.GetPos();
         }
 
         ~Link()

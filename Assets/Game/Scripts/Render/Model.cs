@@ -1,4 +1,6 @@
+#nullable enable
 using System.Collections.Generic;
+using Game.Scripts.Data;
 using UnityEngine;
 
 namespace Game.Scripts.Render
@@ -12,24 +14,23 @@ namespace Game.Scripts.Render
             this.Entries = entries;
         }
 
-        public static Model Of(Texture Texture, Vector2 Size, Vector2 Offset, float Rotation)
-        {
-            var list = new List<ModelEntry>();
-            list.Add(new ModelEntry(Texture, Size, Offset, Rotation));
-            return new Model(list);
-        }
-
         public static void RenderModel(Model model, Vector2 position)
         {
             foreach (var modelEntry in model.Entries)
             {
-                // GL.PushMatrix();
-                // GL.LoadProjectionMatrix(Matrix4x4.Rotate(Quaternion.Euler(0, 0, modelEntry.Rotation)));
-                Graphics.DrawTexture(new Rect(position+modelEntry.Offset, modelEntry.Size), modelEntry.Texture);
-                // GL.PopMatrix();
+                var pos = position + modelEntry.Offset;
+                GL.PushMatrix();
+                GL.modelview = Camera.main.worldToCameraMatrix
+                               * Matrix4x4.Translate(pos + modelEntry.Size/2)
+                               * Matrix4x4.Rotate(Quaternion.Euler(0, 0, modelEntry.Rotation))
+                               * Matrix4x4.Translate(-pos - modelEntry.Size/2)
+                               * Matrix4x4.Translate(modelEntry.Offset);
+                Graphics.DrawTexture(new Rect(pos - modelEntry.Offset, modelEntry.Size), modelEntry.Texture.texture, new Rect(modelEntry.Texture.u, modelEntry.Texture.v, modelEntry.Texture.width, modelEntry.Texture.height), );
+                
+                GL.PopMatrix();
             }
         }
 
-        public record ModelEntry(Texture Texture, Vector2 Size, Vector2 Offset, float Rotation);
+        public record ModelEntry(TexturePart Texture, Vector2 Size, Vector2 Offset, Vector2 Pivot, float Rotation);
     }
 }

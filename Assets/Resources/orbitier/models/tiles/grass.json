@@ -1,0 +1,9 @@
+{
+  "elements": [
+    {
+      "texture": "orbitier:tiles/grass/grass1",
+      "size": [6, 6],
+      "rotation": 0
+    }
+  ]
+}

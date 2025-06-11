@@ -1,3 +1,6 @@
+#nullable enable
+using System.Collections.Generic;
+using Game.Scripts.Blocks.Links;
 using Game.Scripts.Render;
 using Game.Scripts.Tiling;
 using Game.Scripts.World;
@@ -8,7 +11,7 @@ namespace Game.Scripts.Blocks
 {
     public abstract class Block : DrawableObject
     {
-        protected WorldMap? WorldMap;
+        protected WorldMap WorldMap = null!;
         private Tile RootTile;
         protected Block()
         {
@@ -20,8 +23,8 @@ namespace Game.Scripts.Blocks
         {
             WorldMap = worldMap;
         }
-
-        public WorldMap? GetWorldMap()
+        
+        public WorldMap GetWorldMap()
         {
             return WorldMap;
         }

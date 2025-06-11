@@ -1,3 +1,4 @@
+#nullable enable
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using Game.Scripts.Blocks.Links;

@@ -1,3 +1,4 @@
+#nullable enable
 using System.Collections.Generic;
 using System.Linq;
 using Game.Scripts.Blocks.Links;
@@ -13,6 +14,7 @@ namespace Game.Scripts.World
         private readonly Dictionary<string, LoadedEntity> _loadedEntities = new Dictionary<string, LoadedEntity>();
         public readonly ScheduleContainer Schedules = new();
         public readonly List<Link> NotEmptyLinks = new List<Link>();
+        public readonly List<Link> ActiveLinks = new List<Link>();
 
 
         public WorldMap(GameTileMap map)

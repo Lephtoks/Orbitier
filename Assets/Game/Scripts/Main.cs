@@ -1,3 +1,4 @@
+#nullable enable
 using System;
 using System.ComponentModel;
 using System.IO;
@@ -40,6 +41,7 @@ namespace Game.Scripts
             
             _map = new GameTileMap();
             _world = new WorldMap(_map);
+            ObjectRenderer.Map = _world;
 
             _map.GenerateChunk(new Vector2(0, 0));
             _map.GenerateChunk(new Vector2(-1, 0));
@@ -56,7 +58,12 @@ namespace Game.Scripts
             _spectatingEntity = player;
             ObjectRenderer.ShowObject(player);
         }
-        
+
+        private void OnDestroy()
+        {
+            ObjectRenderer.Map = null;
+        }
+
         public static readonly MainRegistrar VANILLA = new MainRegistrar("orbitier");
 
         private void Update()
@@ -95,6 +102,10 @@ namespace Game.Scripts
                     }
                 }
             }
+            foreach (var link in _world.ActiveLinks)
+            {
+                // Graphics.
+            }
 
             if (released)
             {
@@ -110,6 +121,7 @@ namespace Game.Scripts
                 if (_hoveredDrawable is Tile tile)
                 {
                     var pulsarBlock = new PulsarBlock();
+                    pulsarBlock.SetWorldMap(_world);
                     tile.SetBlock(pulsarBlock);
                     ObjectRenderer.ShowObject(pulsarBlock);
                     
@@ -131,6 +143,11 @@ namespace Game.Scripts
                 Vector2 position = _spectatingEntity.GetPosition();
                 _mainCamera.transform.position = Vector3.Lerp(_mainCamera.transform.position, new Vector3(position.x, position.y, _mainCamera.transform.position.z), 
                     Mathf.Pow(0.9340f, 1/Time.deltaTime));
+            }
+
+            foreach (var link in _world.ActiveLinks)
+            {
+                link.InterpolatedEnd = Vector2.Lerp(link.InterpolatedEnd, link.To.GetPos(), 0.2f);
             }
         }
 
@@ -162,12 +179,6 @@ namespace Game.Scripts
         {
             GameTiles.Init();
         }
-    }
-
-    [Serializable]
-    public class TST
-    {
-        public int i;
     }
     
 }

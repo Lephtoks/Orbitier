@@ -1,3 +1,4 @@
+#nullable enable
 using System;
 
 namespace Game.Scripts.Registry
@@ -26,7 +27,7 @@ namespace Game.Scripts.Registry
             return _path == other._path && _namespace == other._namespace;
         }
 
-        public override bool Equals(object obj)
+        public override bool Equals(object? obj)
         {
             return obj is Identifier other && Equals(other);
         }

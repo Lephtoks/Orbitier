@@ -1,3 +1,4 @@
+#nullable enable
 using System.Collections.Generic;
 using Game.Scripts.Render;
 using System;
@@ -32,7 +33,7 @@ namespace Game.Scripts.Data
 
             foreach (var element in root.elements)
             {
-                var modelEntry = new Model.ModelEntry(OrbitierAssets.GetTexture(Identifier.Parse(element.texture)), element.size, element.offset, element.rotation);
+                var modelEntry = new Model.ModelEntry(OrbitierAssets.GetTexture(Identifier.Parse(element.texture)), new Vector2(element.size[0], element.size[1]), new Vector2(element.offset[0], element.offset[1]),new Vector2(element.pivot[0], element.pivot[1]), element.rotation);
                 entries.Add(modelEntry);
             }
             Model model = new Model(entries);
@@ -47,6 +48,7 @@ namespace Game.Scripts.Data
             byte[] bytes = File.ReadAllBytes(fullPath +  "/textures/" + path + ".png");
             Texture2D texture = new Texture2D(1, 1);
             texture.LoadImage(bytes);
+            texture.filterMode = FilterMode.Point;
             
             cacheTextures.Add(path, texture);
             return texture;
@@ -55,8 +57,9 @@ namespace Game.Scripts.Data
         [Serializable]
         private class JSONModel
         {
-            public Vector2 offset;
-            public Vector2 size;
+            public float[] offset = {0f, 0f};
+            public float[] size = {0f, 0f};
+            public float[] pivot = {0f, 0f};
             public float rotation;
             public string texture;
         }

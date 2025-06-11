@@ -1,3 +1,4 @@
+#nullable enable
 using Game.Scripts.Blocks.Links;
 
 namespace Game.Scripts.Recipe

@@ -1,3 +1,4 @@
+#nullable enable
 using Game.Scripts.Blocks;
 using Game.Scripts.Render;
 using Game.Scripts.World;

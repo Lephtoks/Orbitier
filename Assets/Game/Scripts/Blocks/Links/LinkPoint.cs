@@ -1,3 +1,5 @@
+#nullable enable
+using System;
 using Game.Scripts.Items;
 using UnityEngine;
 
@@ -34,8 +36,24 @@ namespace Game.Scripts.Blocks.Links
         public void LinkWIth(LinkPoint to)
         {
             var link = new Link(this, to, this.Group);
+            link.ResetInterpolation();
             this.Link = link;
             to.Link = link;
+            this.Owner.GetWorldMap().ActiveLinks.Add(link);
+        }
+
+        public void Unlink()
+        {
+            
+            if (Link == null) throw new InvalidOperationException("Link must not be null.");
+            Owner.GetWorldMap().ActiveLinks.Remove(Link);
+            var link = Link;
+            link.To.Link = null;
+            link.From.Link = null;
+        }
+        public Vector2 GetPos()
+        {
+            return this.Point + Owner.GetPosition();
         }
     }
 }

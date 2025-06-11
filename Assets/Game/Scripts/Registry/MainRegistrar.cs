@@ -1,3 +1,4 @@
+#nullable enable
 using Game.Scripts.Render;
 
 namespace Game.Scripts.Registry

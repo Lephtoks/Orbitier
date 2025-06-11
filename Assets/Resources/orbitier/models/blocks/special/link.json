@@ -1,10 +1,11 @@
 {
   "elements": [
     {
-      "texture": "orbitier:blocks/pulsar",
-      "offset": { "x": 0, "y": 0 },
-      "size": { "x": 1, "y": 1 },
-      "rotation": 0
+      "texture": "orbitier:blocks/special/link/mark",
+      "offset": [-0.5, -0.5],
+      "size": [1, 1],
+      "pivot": [1, 100, 5],
+      "rotation": 45
     }
   ]
 }

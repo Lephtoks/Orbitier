@@ -1,3 +1,4 @@
+#nullable enable
 using Game.Scripts.Tiling;
 
 namespace Game.Scripts.Registry

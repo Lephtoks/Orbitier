@@ -1,3 +1,4 @@
+#nullable enable
 namespace Game.Scripts.Items
 {
     public interface ILinkItem
